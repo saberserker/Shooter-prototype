@@ -1,0 +1,23 @@
+import pygame
+gvol = 1.0
+snd = {}
+
+def set_global_volume(volume):
+	global gvol
+	gvol = volume
+
+def play_se(filenm, volume=1.0):
+	if filenm not in snd:
+		snd[filenm] = pygame.mixer.Sound(filenm)
+		snd[filenm].set_volume(gvol*volume)
+	else:
+		snd[filenm].stop()
+	snd[filenm].play()
+	return snd[filenm]
+
+def stop_se(filenm):
+	if filenm in snd:
+		snd[filenm].stop()
+
+
+
